@@ -3,151 +3,325 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Informativa sulla privacy dell'app MemoSpeo.">
-  <meta name="theme-color" content="#071b1a">
-  <title>Informativa privacy · MemoSpeo</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#007f73">
+  <meta name="robots" content="index,follow">
+  <title>MemoSpeo · Informativa sulla privacy</title>
+  <meta name="description" content="Informativa sulla privacy di MemoSpeo: dati locali, backup cifrati, pubblicità, analisi, notifiche e acquisti Google Play.">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5faf8;
+      --surface: #ffffff;
+      --surface-soft: #edf7f4;
+      --text: #17211f;
+      --muted: #5d6c68;
+      --line: #d8e7e2;
+      --brand: #007f73;
+      --brand-dark: #005f57;
+      --accent: #ff9f1a;
+      --shadow: 0 18px 50px rgba(16, 68, 60, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 90% 0, rgba(255,159,26,.10), transparent 28rem),
+        linear-gradient(180deg, #f8fcfb 0, var(--bg) 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--brand-dark); text-underline-offset: 3px; }
+    a:hover { color: var(--brand); }
+    .wrap { width: min(980px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 44px 0 24px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 6vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: linear-gradient(135deg, #006f65, #009b8c);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      right: -70px;
+      top: -95px;
+      border: 34px solid rgba(255,255,255,.10);
+      border-radius: 50%;
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      opacity: .82;
+    }
+    h1 { margin: 0; font-size: clamp(2.1rem, 7vw, 4rem); line-height: 1.05; letter-spacing: -.045em; }
+    .lead { max-width: 760px; margin: 18px 0 0; font-size: clamp(1rem, 2.2vw, 1.22rem); opacity: .93; }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 22px; font-size: .9rem; opacity: .9; }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      margin: 18px 0;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 26px rgba(16,68,60,.06);
+    }
+    .toolbar strong { padding-left: 8px; font-size: .92rem; }
+    .languages { display: flex; flex-wrap: wrap; gap: 6px; }
+    .lang {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--text);
+      padding: 8px 12px;
+      font: inherit;
+      font-size: .86rem;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .lang[aria-pressed="true"] { border-color: var(--brand); background: var(--surface-soft); color: var(--brand-dark); }
+    main { padding-bottom: 44px; }
+    .notice {
+      margin: 18px 0;
+      padding: 18px 20px;
+      border-left: 5px solid var(--accent);
+      border-radius: 16px;
+      background: #fff8eb;
+      color: #4c3a1d;
+    }
+    .card {
+      margin: 16px 0;
+      padding: clamp(22px, 4vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: 0 8px 30px rgba(16,68,60,.045);
+    }
+    h2 { margin: 0 0 12px; font-size: clamp(1.25rem, 3vw, 1.65rem); letter-spacing: -.02em; }
+    h3 { margin: 22px 0 8px; font-size: 1.04rem; }
+    p { margin: 10px 0; }
+    ul { margin: 10px 0; padding-left: 1.25rem; }
+    li + li { margin-top: 7px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .mini { padding: 18px; border-radius: 18px; background: var(--surface-soft); }
+    .mini strong { color: var(--brand-dark); }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .pill { padding: 13px 14px; border-radius: 16px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); }
+    .pill b { display: block; font-size: .85rem; }
+    .pill span { font-size: .8rem; opacity: .86; }
+    footer { padding: 0 0 48px; color: var(--muted); font-size: .88rem; text-align: center; }
+    [data-copy] { display: none; }
+    [data-copy].active { display: block; }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 20px, 980px); }
+      header { padding-top: 14px; }
+      .hero { border-radius: 23px; }
+      .summary, .grid { grid-template-columns: 1fr; }
+      .toolbar { align-items: flex-start; flex-direction: column; }
+      .toolbar strong { padding: 0; }
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { color-scheme: dark; --bg:#0c1513; --surface:#131e1b; --surface-soft:#172925; --text:#edf7f4; --muted:#a7bbb5; --line:#29413b; --brand:#43d1c1; --brand-dark:#65dfd1; --shadow:none; }
+      body { background: radial-gradient(circle at 90% 0, rgba(255,159,26,.08), transparent 28rem), var(--bg); }
+      .toolbar { background: rgba(19,30,27,.92); }
+      .lang { background: #101b18; }
+      .notice { background:#2a2418; color:#f7e4bd; }
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="MemoSpeo - pagina iniziale">
-      <span class="brand-mark" aria-hidden="true">M</span>
-      <span><strong>MemoSpeo</strong><small>Privacy &amp; data</small></span>
-    </a>
-    <nav aria-label="Navigazione principale">
-      <a class="active" href="privacy.html">Privacy</a>
-      <a href="delete-account.html">Cancella account</a>
-    </nav>
+  <header class="wrap">
+    <section class="hero">
+      <p class="eyebrow">MemoSpeo · Privacy</p>
+      <h1 id="hero-title">I tuoi dati, sotto il tuo controllo.</h1>
+      <p class="lead" id="hero-lead">MemoSpeo conserva i contenuti sul dispositivo. Il backup è manuale, cifrato e scritto direttamente nello spazio scelto dall’utente.</p>
+      <div class="summary" aria-label="Riepilogo privacy">
+        <div class="pill"><b>Local-first</b><span id="pill-local">Contenuti sul dispositivo</span></div>
+        <div class="pill"><b>AES-GCM</b><span id="pill-encryption">Backup cifrato localmente</span></div>
+        <div class="pill"><b>No account</b><span id="pill-account">Nessun account MemoSpeo</span></div>
+      </div>
+      <div class="meta"><span>Versione dell’informativa: 19 ottobre 2026</span><span>App: MemoSpeo 15.1</span></div>
+    </section>
   </header>
 
-  <main class="document-layout">
-    <aside class="document-index" aria-label="Indice del documento">
-      <p>Informativa</p>
-      <a href="#sintesi">Sintesi</a>
-      <a href="#dati">Dati trattati</a>
-      <a href="#finalita">Finalità</a>
-      <a href="#servizi">Servizi esterni</a>
-      <a href="#conservazione">Conservazione</a>
-      <a href="#scelte">Le tue scelte</a>
-      <a href="#contatti">Contatti</a>
-      <a href="#english">English</a>
-    </aside>
+  <div class="wrap toolbar">
+    <strong id="language-label">Lingua</strong>
+    <nav class="languages" aria-label="Selezione lingua">
+      <button class="lang" type="button" data-lang="it" aria-pressed="true">Italiano</button>
+      <button class="lang" type="button" data-lang="en" aria-pressed="false">English</button>
+      <button class="lang" type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+      <button class="lang" type="button" data-lang="fr" aria-pressed="false">Français</button>
+      <button class="lang" type="button" data-lang="pt" aria-pressed="false">Português</button>
+    </nav>
+  </div>
 
-    <article class="document">
-      <div class="document-heading">
-        <div class="eyebrow"><span></span> Documento pubblico</div>
-        <h1>Informativa privacy</h1>
-        <p class="lead">Come MemoSpeo tratta i dati nell’app, nel backup cloud facoltativo e nei servizi Google integrati.</p>
-        <div class="meta"><span>Ultimo aggiornamento</span><strong>15 ottobre 2026</strong></div>
-      </div>
-
-      <div class="callout"><strong>In breve</strong><p>MemoSpeo è local-first. Memo, scadenze, appunti e liste restano sul dispositivo. Una copia viene caricata su Firebase soltanto quando colleghi un account Google e confermi manualmente la sincronizzazione.</p></div>
-
-      <section id="sintesi">
+  <main class="wrap">
+    <article data-copy="it" class="active">
+      <div class="notice"><strong>In breve:</strong> MemoSpeo non utilizza server propri per conservare memo, note, liste o backup. I servizi Google integrati possono trattare alcuni dati tecnici per pubblicità, analisi, notifiche e acquisti.</div>
+      <section class="card">
         <h2>1. Titolare e ambito</h2>
-        <p>Questa informativa riguarda l’app Android MemoSpeo, pubblicata dallo sviluppatore Rany82Developer. Per domande sulla privacy o richieste relative ai dati puoi scrivere a <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p>
-        <p>MemoSpeo non vende i tuoi dati personali. Alcune funzioni si affidano a servizi Google, descritti qui sotto, che trattano dati secondo le proprie condizioni e informative.</p>
+        <p>Questa informativa descrive come l’app Android <strong>MemoSpeo</strong> tratta i dati. Per domande sulla privacy o sull’assistenza puoi scrivere a <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p>
+        <p>MemoSpeo non richiede la creazione di un account MemoSpeo. Gli eventuali account dei fornitori di archiviazione o di Google Play sono gestiti direttamente dai rispettivi fornitori.</p>
       </section>
-
-      <section id="dati">
-        <h2>2. Dati trattati</h2>
-        <h3>Dati conservati sul dispositivo</h3>
-        <p>Memo, impegni e scadenze, date e orari, appunti, liste e suggerimenti, contatti o partecipanti inseriti dall’utente, preferenze, promemoria e impostazioni di protezione degli appunti vengono salvati localmente. Le notifiche sono programmate localmente.</p>
-
-        <h3>Cloud Sync facoltativo</h3>
-        <p>Se scegli di collegare un account Google e avvii “Sincronizza ora”, MemoSpeo usa Firebase Authentication per identificare l’account e Cloud Firestore per memorizzare una copia di backup. Il backup può includere i contenuti elencati sopra e metadati tecnici necessari alla sincronizzazione. Google Drive non viene utilizzato.</p>
-        <p>L’accesso Google può fornire a Firebase l’indirizzo email, un identificativo dell’account e le informazioni di profilo di base rese disponibili dal servizio di autenticazione. MemoSpeo non riceve la password del tuo account Google.</p>
-
-        <h3>Dati tecnici, Analytics e annunci</h3>
-        <p>Firebase Analytics misura schermate visitate e interazioni tecniche per comprendere utilizzo, stabilità e funzionamento dell’app. Il testo dei memo, degli appunti e delle liste non viene intenzionalmente inserito negli eventi Analytics.</p>
-        <p>Google AdMob e la piattaforma di consenso Google possono trattare identificatori del dispositivo o pubblicitari, indirizzo IP, informazioni tecniche del dispositivo, interazioni con gli annunci e scelte di consenso. L’indirizzo IP può essere usato dal fornitore per ricavare una posizione generale.</p>
-
-        <h3>Acquisti</h3>
-        <p>Google Play gestisce acquisti, abbonamenti e pagamenti. MemoSpeo può ricevere lo stato dell’acquisto, il prodotto acquistato e gli identificatori tecnici necessari a riconoscere il diritto acquistato, ma non riceve i dati completi della carta di pagamento.</p>
-      </section>
-
-      <section id="finalita">
-        <h2>3. Perché vengono usati</h2>
+      <section class="card">
+        <h2>2. Dati conservati sul dispositivo</h2>
+        <p>Memo, scadenze, appunti, liste, suggerimenti, preferenze, promemoria e le altre informazioni inserite nell’app sono conservati principalmente nel database locale del dispositivo.</p>
         <ul>
-          <li>fornire memo, appunti, liste, notifiche e preferenze richieste dall’utente;</li>
-          <li>eseguire backup e ripristino cloud quando richiesti;</li>
-          <li>autenticare e proteggere l’accesso ai dati cloud;</li>
-          <li>misurare in forma tecnica l’uso delle schermate e migliorare affidabilità e prestazioni;</li>
-          <li>mostrare annunci e rispettare le scelte di consenso applicabili;</li>
-          <li>gestire acquisti, abbonamenti e ripristino dei diritti acquistati;</li>
-          <li>prevenire abusi, frodi e problemi di sicurezza.</li>
+          <li>Le notifiche e i promemoria sono programmati localmente.</li>
+          <li>La protezione biometrica, quando usata, è gestita dal sistema Android: MemoSpeo non riceve né conserva i dati biometrici.</li>
+          <li>I contenuti dell’utente non vengono intenzionalmente inseriti negli eventi pubblicitari o di analisi.</li>
         </ul>
+        <p>Android può includere alcuni dati dell’app nei servizi di backup del dispositivo, in base alle impostazioni del sistema e dell’account Google dell’utente. MemoSpeo non può accedere a tali copie.</p>
       </section>
-
-      <section id="servizi">
-        <h2>4. Servizi esterni e condivisione</h2>
-        <p>I dati vengono comunicati solo quando necessario al funzionamento dei servizi scelti o integrati:</p>
-        <div class="data-table" role="table" aria-label="Servizi esterni usati da MemoSpeo">
-          <div class="table-row table-head" role="row"><span>Servizio</span><span>Funzione</span><span>Dati principali</span></div>
-          <div class="table-row" role="row"><strong>Firebase Authentication</strong><span>Accesso al Cloud Sync</span><span>Email, ID account, profilo di base</span></div>
-          <div class="table-row" role="row"><strong>Cloud Firestore</strong><span>Backup e ripristino</span><span>Contenuti scelti per il backup e metadati</span></div>
-          <div class="table-row" role="row"><strong>Firebase Analytics</strong><span>Analisi tecnica</span><span>Schermate, interazioni, dati app/dispositivo</span></div>
-          <div class="table-row" role="row"><strong>Google AdMob</strong><span>Pubblicità e consenso</span><span>Identificatori, IP, dati annunci e consenso</span></div>
-          <div class="table-row" role="row"><strong>Google Play</strong><span>Acquisti e distribuzione</span><span>Dati tecnici e stato degli acquisti</span></div>
+      <section class="card">
+        <h2>3. Backup e ripristino scelti dall’utente</h2>
+        <p>Il backup è <strong>facoltativo e manuale</strong>. MemoSpeo mostra prima un riepilogo, quindi utilizza il selettore di cartelle di Android per scrivere il file direttamente nella posizione scelta dall’utente, ad esempio Google Drive, OneDrive o memoria locale.</p>
+        <div class="grid">
+          <div class="mini"><strong>Cifratura sul dispositivo</strong><br>Il file viene cifrato con AES-GCM prima della scrittura, usando una password scelta dall’utente.</div>
+          <div class="mini"><strong>Password non conservata</strong><br>La password del backup non viene salvata né trasmessa. Se viene dimenticata, MemoSpeo non può recuperarla.</div>
+          <div class="mini"><strong>Nessun server MemoSpeo</strong><br>Il database e il backup non transitano su server MemoSpeo e non vengono salvati in Firebase.</div>
+          <div class="mini"><strong>Controllo dell’utente</strong><br>I file si eliminano dal provider scelto. Revocare l’accesso alla cartella non elimina automaticamente i file già creati.</div>
         </div>
-        <p>Google può trattare dati anche al di fuori del Paese dell’utente, applicando le garanzie descritte nelle proprie informative. Puoi consultare la <a href="https://policies.google.com/privacy" rel="external">Privacy Policy di Google</a> e le informazioni su <a href="https://firebase.google.com/support/privacy" rel="external">privacy e sicurezza di Firebase</a>.</p>
+        <p>MemoSpeo conserva localmente soltanto il permesso di accesso alla cartella, il nome visualizzato della cartella e la data dell’ultimo backup riuscito. Il provider selezionato tratta il file cifrato secondo i propri termini e la propria informativa.</p>
       </section>
-
-      <section id="conservazione">
-        <h2>5. Conservazione e sicurezza</h2>
+      <section class="card">
+        <h2>4. Servizi Google e dati tecnici</h2>
+        <h3>Pubblicità e consenso</h3>
+        <p>La versione gratuita utilizza Google AdMob e la User Messaging Platform. In base al dispositivo, all’area geografica e alle scelte di consenso, questi servizi possono trattare o condividere posizione approssimativa derivata dall’indirizzo IP, interazioni con l’app e con gli annunci, dati diagnostici e identificatori del dispositivo o pubblicitari. Sono utilizzati per mostrare e misurare gli annunci e per prevenire frodi e abusi. MemoSpeo Pro rimuove la pubblicità.</p>
+        <h3>Analisi</h3>
+        <p>Firebase Analytics può raccogliere dati tecnici, interazioni con l’app, informazioni sul dispositivo e dati diagnostici per comprendere utilizzo, stabilità e prestazioni. MemoSpeo non inserisce intenzionalmente il testo di memo, note, liste o backup negli eventi Analytics.</p>
+        <h3>Notifiche</h3>
+        <p>Firebase Cloud Messaging può trattare un identificatore di installazione e informazioni tecniche necessarie alla consegna di comunicazioni dell’app. I promemoria personali sono programmati localmente.</p>
+        <h3>Acquisti</h3>
+        <p>Google Play Billing gestisce l’acquisto una tantum di MemoSpeo Pro e il ripristino del diritto acquistato. MemoSpeo riceve lo stato necessario ad abilitare le funzioni Pro, ma non riceve il numero completo della carta o le credenziali di pagamento.</p>
+        <p>Per maggiori informazioni: <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Informativa sulla privacy di Google</a>, <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer">tecnologie pubblicitarie Google</a> e <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer">privacy e sicurezza Firebase</a>.</p>
+      </section>
+      <section class="card">
+        <h2>5. Finalità e base del trattamento</h2>
         <ul>
-          <li><strong>Dati locali:</strong> restano sul dispositivo finché li elimini nell’app, cancelli i dati dell’app o disinstalli MemoSpeo.</li>
-          <li><strong>Backup cloud:</strong> resta finché viene sostituito da un nuovo backup o ne richiedi la cancellazione.</li>
-          <li><strong>Identità Firebase:</strong> resta finché utilizzi il Cloud Sync o ne richiedi la cancellazione.</li>
-          <li><strong>Analytics e pubblicità:</strong> seguono le impostazioni di conservazione e le informative dei servizi Google interessati.</li>
-          <li><strong>Acquisti:</strong> i dati fiscali e delle transazioni conservati da Google Play seguono gli obblighi e le politiche di Google.</li>
+          <li><strong>Funzionalità dell’app:</strong> creare promemoria, salvare preferenze, effettuare backup e ripristini e verificare MemoSpeo Pro.</li>
+          <li><strong>Analisi e diagnostica:</strong> misurare utilizzo e prestazioni e correggere problemi.</li>
+          <li><strong>Pubblicità:</strong> mostrare, limitare e misurare annunci nella versione gratuita.</li>
+          <li><strong>Sicurezza e conformità:</strong> prevenire frodi, abusi e utilizzi illeciti.</li>
         </ul>
-        <p>I dati trasmessi ai servizi cloud vengono protetti durante il trasferimento tramite connessioni cifrate. Nessun sistema è però completamente esente da rischi.</p>
+        <p>Quando previsto dalla legge, la pubblicità personalizzata e le relative tecnologie sono basate sul consenso gestito tramite gli strumenti Google. Altri trattamenti tecnici sono necessari all’erogazione del servizio o si basano sul legittimo interesse alla sicurezza e al miglioramento dell’app.</p>
       </section>
-
-      <section id="scelte">
-        <h2>6. Le tue scelte</h2>
+      <section class="card">
+        <h2>6. Conservazione, cancellazione e controllo</h2>
         <ul>
-          <li>puoi usare le funzioni locali senza avviare Cloud Sync;</li>
-          <li>puoi rivedere le opzioni privacy degli annunci dall’app quando disponibili nella tua area;</li>
-          <li>puoi eliminare singoli contenuti direttamente dall’app;</li>
-          <li>puoi richiedere la cancellazione dell’identità MemoSpeo e di tutti i dati cloud associati.</li>
+          <li>I dati locali restano finché l’utente li elimina, cancella i dati dell’app o disinstalla MemoSpeo.</li>
+          <li>I backup restano nello spazio scelto finché l’utente non li elimina direttamente da quel provider.</li>
+          <li>L’accesso alla cartella può essere revocato dalle impostazioni di MemoSpeo o del dispositivo.</li>
+          <li>Le preferenze pubblicitarie possono essere modificate tramite “Scelte privacy annunci” quando l’opzione è disponibile.</li>
+          <li>I dati tecnici trattati da Google seguono i tempi di conservazione e i controlli previsti da Google.</li>
         </ul>
-        <a class="button primary inline-button" href="delete-account.html">Istruzioni per la cancellazione</a>
-        <p>La cancellazione cloud non elimina automaticamente i dati locali. Per rimuoverli dal telefono, usa i comandi dell’app oppure cancella i dati dell’app/disinstallala.</p>
       </section>
-
-      <section id="contatti">
-        <h2>7. Contatti e aggiornamenti</h2>
-        <p>Per accesso, correzione, cancellazione o altre domande sui dati scrivi a <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>. Questa informativa può essere aggiornata quando cambiano le funzioni o gli obblighi applicabili; la data più recente è sempre mostrata in alto.</p>
+      <section class="card">
+        <h2>7. Sicurezza e trasferimenti</h2>
+        <p>Le comunicazioni dei servizi online utilizzano connessioni cifrate durante il trasferimento. Il backup portatile è cifrato sul dispositivo prima di essere scritto nel provider selezionato. Nessun sistema è totalmente privo di rischi: l’utente deve custodire la password del backup e proteggere il proprio dispositivo e account di archiviazione.</p>
+        <p>I fornitori terzi possono trattare dati in Paesi diversi da quello dell’utente, applicando le garanzie descritte nelle rispettive informative.</p>
       </section>
-
-      <hr>
-
-      <section id="english" lang="en">
-        <div class="language-label">ENGLISH VERSION</div>
-        <h2>MemoSpeo Privacy Policy</h2>
-        <p><strong>Last updated: October 15, 2026.</strong></p>
-        <p>MemoSpeo is a local-first Android app published by Rany82Developer. For privacy questions, contact <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>. MemoSpeo does not sell personal data.</p>
-        <h3>Data on your device</h3>
-        <p>Tasks, due dates, notes, lists, suggestions, contacts or participants entered by the user, preferences, reminders and note-protection settings are stored locally. Notifications are scheduled locally.</p>
-        <h3>Optional Cloud Sync</h3>
-        <p>Only after you select a Google account and confirm “Sync now”, MemoSpeo uses Firebase Authentication and Cloud Firestore to associate and store a backup under that identity. The backup may include the content listed above and technical sync metadata. Google Drive is not used. Firebase may receive your email address, account identifier and basic profile information; MemoSpeo does not receive your Google password.</p>
-        <h3>Analytics, ads and purchases</h3>
-        <p>Firebase Analytics measures screen views and technical interactions for usage, reliability and performance analysis. Memo, note and list text is not intentionally included in Analytics events. Google AdMob and Google’s consent platform may process device or advertising identifiers, IP address, technical device data, ad interactions and consent choices. Google Play processes purchases and payments; MemoSpeo receives purchase status and technical entitlement data, not full payment-card details.</p>
-        <h3>Purposes and service providers</h3>
-        <p>Data is used to provide requested local features, optional backup and restore, authentication and security, technical analysis, advertising, consent management and purchases. Providers involved are Google Firebase, Google Analytics, Google AdMob and Google Play under their respective terms.</p>
-        <h3>Retention and your choices</h3>
-        <p>Local data remains until you delete it, clear the app’s data or uninstall MemoSpeo. A cloud backup remains until it is replaced or deletion is requested. The Firebase identity remains while Cloud Sync is used or until deletion is requested. Analytics, advertising and Google Play transaction data follow the relevant Google settings, legal requirements and policies.</p>
-        <p>You can use local features without Cloud Sync, review ad privacy choices when available, delete individual content in the app, and request deletion of the MemoSpeo Firebase identity and associated cloud data. Cloud deletion does not remove data that remains locally on your device.</p>
-        <p>See the <a href="delete-account.html#english">account and cloud data deletion instructions</a>, <a href="https://policies.google.com/privacy" rel="external">Google Privacy Policy</a>, and <a href="https://firebase.google.com/support/privacy" rel="external">Firebase privacy and security information</a>.</p>
+      <section class="card">
+        <h2>8. Modifiche e contatti</h2>
+        <p>Questa informativa può essere aggiornata quando cambiano l’app, i servizi utilizzati o gli obblighi normativi. La data in alto identifica l’ultima versione.</p>
+        <p>Per richieste relative alla privacy: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p>
       </section>
+    </article>
+
+    <article data-copy="en" lang="en">
+      <div class="notice"><strong>In short:</strong> MemoSpeo does not use its own servers to store memos, notes, lists, or backups. Integrated Google services may process limited technical data for advertising, analytics, notifications, and purchases.</div>
+      <section class="card"><h2>1. Controller and scope</h2><p>This policy explains how the Android app <strong>MemoSpeo</strong> processes data. For privacy or support questions, contact <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p><p>MemoSpeo does not require a MemoSpeo account. Accounts used for a storage provider or Google Play are managed directly by those providers.</p></section>
+      <section class="card"><h2>2. Data kept on the device</h2><p>Memos, deadlines, notes, lists, suggestions, preferences, reminders, and other information entered in the app are primarily stored in the device’s local database.</p><ul><li>Reminders and notifications are scheduled locally.</li><li>Biometric protection is handled by Android; MemoSpeo does not receive or store biometric data.</li><li>User content is not intentionally included in advertising or analytics events.</li></ul><p>Android may include some app data in device backup services, depending on the user’s system and Google account settings. MemoSpeo cannot access those copies.</p></section>
+      <section class="card"><h2>3. User-selected backup and restore</h2><p>Backup is <strong>optional and manual</strong>. After showing a summary, MemoSpeo uses Android’s system folder picker to write the file directly to the location selected by the user, such as Google Drive, OneDrive, or local storage.</p><ul><li>The file is encrypted on the device with AES-GCM using a password chosen by the user.</li><li>The password is never stored or transmitted and cannot be recovered by MemoSpeo.</li><li>The database and backup do not pass through MemoSpeo servers and are not stored in Firebase.</li><li>Existing files must be deleted from the selected provider; revoking folder access does not delete them.</li></ul><p>MemoSpeo keeps only the folder access permission, its display name, and the time of the latest successful backup on the device. The selected provider processes the encrypted file under its own terms and privacy policy.</p></section>
+      <section class="card"><h2>4. Google services and technical data</h2><h3>Advertising and consent</h3><p>The free version uses Google AdMob and the User Messaging Platform. Depending on the device, region, and consent choices, these services may process or share approximate location derived from the IP address, app and ad interactions, diagnostics, and device or advertising identifiers. They are used to deliver and measure ads and prevent fraud and abuse. MemoSpeo Pro removes advertising.</p><h3>Analytics</h3><p>Firebase Analytics may collect technical data, app interactions, device information, and diagnostics to understand usage, stability, and performance. MemoSpeo does not intentionally include the text of memos, notes, lists, or backups in Analytics events.</p><h3>Notifications</h3><p>Firebase Cloud Messaging may process an installation identifier and technical information required to deliver app communications. Personal reminders are scheduled locally.</p><h3>Purchases</h3><p>Google Play Billing manages the one-time purchase of MemoSpeo Pro and restoration of the entitlement. MemoSpeo receives the status needed to enable Pro features, but not full card numbers or payment credentials.</p><p>Learn more in the <a href="https://policies.google.com/privacy" rel="noopener noreferrer">Google Privacy Policy</a>, <a href="https://policies.google.com/technologies/ads" rel="noopener noreferrer">Google advertising technologies</a>, and <a href="https://firebase.google.com/support/privacy" rel="noopener noreferrer">Firebase privacy and security documentation</a>.</p></section>
+      <section class="card"><h2>5. Purposes and legal basis</h2><ul><li><strong>App functionality:</strong> reminders, preferences, backup and restore, and Pro entitlement.</li><li><strong>Analytics and diagnostics:</strong> usage, performance, and problem resolution.</li><li><strong>Advertising:</strong> delivery, frequency control, and measurement in the free version.</li><li><strong>Security and compliance:</strong> prevention of fraud, abuse, and unlawful use.</li></ul><p>Where required by law, personalized advertising and related technologies rely on consent managed through Google tools. Other technical processing is necessary to provide the service or is based on legitimate interests in security and app improvement.</p></section>
+      <section class="card"><h2>6. Retention, deletion, and control</h2><ul><li>Local data remains until it is deleted by the user, app data is cleared, or MemoSpeo is uninstalled.</li><li>Backups remain in the selected storage until the user deletes them from that provider.</li><li>Folder access can be revoked in MemoSpeo or device settings.</li><li>Advertising preferences can be changed through “Ad privacy choices” when available.</li><li>Technical data processed by Google follows Google’s retention periods and controls.</li></ul></section>
+      <section class="card"><h2>7. Security and transfers</h2><p>Online service communications use encryption in transit. Portable backups are encrypted on the device before being written to the selected provider. No system is entirely risk-free; users should protect their backup password, device, and storage accounts.</p><p>Third-party providers may process data in countries other than the user’s, subject to the safeguards described in their policies.</p></section>
+      <section class="card"><h2>8. Changes and contact</h2><p>This policy may be updated when the app, integrated services, or legal requirements change. The date at the top identifies the latest version.</p><p>Privacy requests: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p></section>
+    </article>
+
+    <article data-copy="de" lang="de">
+      <div class="notice"><strong>Kurz gesagt:</strong> MemoSpeo verwendet keine eigenen Server zur Speicherung von Memos, Notizen, Listen oder Backups. Eingebundene Google-Dienste können begrenzte technische Daten für Werbung, Analyse, Benachrichtigungen und Käufe verarbeiten.</div>
+      <section class="card"><h2>1. Verantwortlicher und Geltungsbereich</h2><p>Diese Erklärung beschreibt die Datenverarbeitung durch die Android-App <strong>MemoSpeo</strong>. Kontakt für Datenschutz und Support: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p><p>MemoSpeo verlangt kein MemoSpeo-Konto. Konten bei Speicheranbietern oder Google Play werden direkt von diesen Anbietern verwaltet.</p></section>
+      <section class="card"><h2>2. Auf dem Gerät gespeicherte Daten</h2><p>Memos, Fristen, Notizen, Listen, Vorschläge, Einstellungen, Erinnerungen und andere Eingaben werden hauptsächlich in der lokalen Datenbank des Geräts gespeichert.</p><ul><li>Erinnerungen und Benachrichtigungen werden lokal geplant.</li><li>Biometrischer Schutz wird von Android verwaltet; MemoSpeo erhält oder speichert keine biometrischen Daten.</li><li>Nutzerinhalte werden nicht absichtlich in Werbe- oder Analyseereignisse aufgenommen.</li></ul><p>Android kann abhängig von den System- und Google-Kontoeinstellungen einige App-Daten in Gerätesicherungen aufnehmen. MemoSpeo hat keinen Zugriff auf diese Kopien.</p></section>
+      <section class="card"><h2>3. Vom Nutzer gewählte Sicherung und Wiederherstellung</h2><p>Backups sind <strong>optional und manuell</strong>. Nach einer Zusammenfassung schreibt MemoSpeo die Datei über die Android-Systemauswahl direkt an den gewählten Ort, etwa Google Drive, OneDrive oder lokalen Speicher.</p><ul><li>Die Datei wird auf dem Gerät mit AES-GCM und einem vom Nutzer gewählten Passwort verschlüsselt.</li><li>Das Passwort wird weder gespeichert noch übertragen und kann von MemoSpeo nicht wiederhergestellt werden.</li><li>Datenbank und Backup laufen nicht über MemoSpeo-Server und werden nicht in Firebase gespeichert.</li><li>Dateien müssen beim gewählten Anbieter gelöscht werden; das Entziehen des Ordnerzugriffs löscht sie nicht.</li></ul><p>MemoSpeo speichert auf dem Gerät nur die Ordnerberechtigung, den angezeigten Ordnernamen und den Zeitpunkt des letzten erfolgreichen Backups. Der gewählte Anbieter verarbeitet die verschlüsselte Datei nach seinen eigenen Bedingungen.</p></section>
+      <section class="card"><h2>4. Google-Dienste und technische Daten</h2><p>Die kostenlose Version nutzt Google AdMob und die User Messaging Platform. Abhängig von Gerät, Region und Einwilligung können ungefähre Position anhand der IP-Adresse, App- und Anzeigeninteraktionen, Diagnosedaten sowie Geräte- oder Werbe-IDs verarbeitet oder weitergegeben werden. MemoSpeo Pro entfernt Werbung.</p><p>Firebase Analytics kann technische Daten, App-Interaktionen, Geräteinformationen und Diagnosedaten für Nutzung, Stabilität und Leistung erfassen. Texte aus Memos, Notizen, Listen oder Backups werden nicht absichtlich in Analyseereignisse aufgenommen.</p><p>Firebase Cloud Messaging kann eine Installations-ID und technische Informationen für App-Mitteilungen verarbeiten. Persönliche Erinnerungen werden lokal geplant.</p><p>Google Play Billing verwaltet den einmaligen Kauf von MemoSpeo Pro und die Wiederherstellung der Berechtigung. MemoSpeo erhält keine vollständigen Kartendaten oder Zahlungszugangsdaten.</p><p>Weitere Informationen: <a href="https://policies.google.com/privacy">Google-Datenschutzerklärung</a>, <a href="https://policies.google.com/technologies/ads">Google-Werbetechnologien</a> und <a href="https://firebase.google.com/support/privacy">Firebase Datenschutz und Sicherheit</a>.</p></section>
+      <section class="card"><h2>5. Zwecke, Speicherung und Kontrolle</h2><p>Technische Daten werden für App-Funktionen, Analyse, Diagnostik, Werbung sowie Sicherheit und Betrugsprävention verwendet. Soweit gesetzlich erforderlich, beruht personalisierte Werbung auf der über Google verwalteten Einwilligung.</p><ul><li>Lokale Daten bleiben bis zur Löschung, zum Löschen der App-Daten oder zur Deinstallation gespeichert.</li><li>Backups bleiben beim gewählten Anbieter, bis der Nutzer sie dort löscht.</li><li>Ordnerzugriff und Werbeeinstellungen können in der App beziehungsweise im System geändert werden.</li><li>Für Google-Daten gelten die Aufbewahrungsfristen und Kontrollen von Google.</li></ul></section>
+      <section class="card"><h2>6. Sicherheit, Änderungen und Kontakt</h2><p>Online-Verbindungen werden während der Übertragung verschlüsselt. Backups werden vor dem Schreiben auf dem Gerät verschlüsselt. Nutzer sollten Passwort, Gerät und Speicherkonto schützen.</p><p>Diese Erklärung kann bei Änderungen an App, Diensten oder Rechtslage aktualisiert werden. Datenschutzanfragen: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p></section>
+    </article>
+
+    <article data-copy="fr" lang="fr">
+      <div class="notice"><strong>En bref :</strong> MemoSpeo n’utilise pas ses propres serveurs pour stocker les mémos, notes, listes ou sauvegardes. Les services Google intégrés peuvent traiter des données techniques limitées pour la publicité, l’analyse, les notifications et les achats.</div>
+      <section class="card"><h2>1. Responsable et champ d’application</h2><p>Cette politique décrit le traitement des données par l’application Android <strong>MemoSpeo</strong>. Contact confidentialité et assistance : <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p><p>MemoSpeo ne demande pas de compte MemoSpeo. Les comptes du fournisseur de stockage ou de Google Play sont gérés directement par ces fournisseurs.</p></section>
+      <section class="card"><h2>2. Données conservées sur l’appareil</h2><p>Les mémos, échéances, notes, listes, suggestions, préférences, rappels et autres informations saisies sont principalement stockés dans la base locale de l’appareil.</p><ul><li>Les rappels et notifications sont programmés localement.</li><li>La protection biométrique est gérée par Android ; MemoSpeo ne reçoit ni ne conserve les données biométriques.</li><li>Le contenu de l’utilisateur n’est pas volontairement inclus dans les événements publicitaires ou analytiques.</li></ul><p>Android peut inclure certaines données de l’application dans la sauvegarde de l’appareil selon les réglages du système et du compte Google. MemoSpeo ne peut pas accéder à ces copies.</p></section>
+      <section class="card"><h2>3. Sauvegarde et restauration choisies par l’utilisateur</h2><p>La sauvegarde est <strong>facultative et manuelle</strong>. Après affichage d’un récapitulatif, MemoSpeo écrit le fichier directement dans l’emplacement choisi via le sélecteur Android, par exemple Google Drive, OneDrive ou le stockage local.</p><ul><li>Le fichier est chiffré sur l’appareil avec AES-GCM et un mot de passe choisi par l’utilisateur.</li><li>Le mot de passe n’est ni enregistré ni transmis et MemoSpeo ne peut pas le récupérer.</li><li>La base et la sauvegarde ne transitent pas par des serveurs MemoSpeo et ne sont pas stockées dans Firebase.</li><li>Les fichiers doivent être supprimés chez le fournisseur choisi ; révoquer l’accès au dossier ne les supprime pas.</li></ul><p>MemoSpeo conserve localement uniquement l’autorisation d’accès au dossier, son nom affiché et la date de la dernière sauvegarde réussie. Le fournisseur choisi traite le fichier chiffré selon ses propres conditions.</p></section>
+      <section class="card"><h2>4. Services Google et données techniques</h2><p>La version gratuite utilise Google AdMob et la User Messaging Platform. Selon l’appareil, la région et les choix de consentement, ces services peuvent traiter ou partager la position approximative dérivée de l’adresse IP, les interactions avec l’application et les annonces, les diagnostics et les identifiants de l’appareil ou publicitaires. MemoSpeo Pro supprime la publicité.</p><p>Firebase Analytics peut recueillir des données techniques, interactions, informations sur l’appareil et diagnostics afin d’évaluer l’utilisation, la stabilité et les performances. Le texte des mémos, notes, listes ou sauvegardes n’est pas volontairement inclus dans ces événements.</p><p>Firebase Cloud Messaging peut traiter un identifiant d’installation et les informations techniques nécessaires aux communications de l’application. Les rappels personnels sont programmés localement.</p><p>Google Play Billing gère l’achat unique de MemoSpeo Pro et la restauration du droit acheté. MemoSpeo ne reçoit pas le numéro complet de la carte ni les identifiants de paiement.</p><p>En savoir plus : <a href="https://policies.google.com/privacy">Règles de confidentialité Google</a>, <a href="https://policies.google.com/technologies/ads">technologies publicitaires Google</a> et <a href="https://firebase.google.com/support/privacy">confidentialité et sécurité Firebase</a>.</p></section>
+      <section class="card"><h2>5. Finalités, conservation et contrôle</h2><p>Les données techniques sont utilisées pour les fonctionnalités, l’analyse, le diagnostic, la publicité, la sécurité et la prévention de la fraude. Lorsque la loi l’exige, la publicité personnalisée repose sur le consentement géré avec les outils Google.</p><ul><li>Les données locales restent jusqu’à leur suppression, l’effacement des données de l’app ou sa désinstallation.</li><li>Les sauvegardes restent dans l’espace choisi jusqu’à leur suppression par l’utilisateur.</li><li>L’accès au dossier et les préférences publicitaires peuvent être modifiés dans l’app ou le système.</li><li>Les données Google suivent les durées de conservation et contrôles définis par Google.</li></ul></section>
+      <section class="card"><h2>6. Sécurité, modifications et contact</h2><p>Les communications en ligne sont chiffrées en transit. Les sauvegardes sont chiffrées sur l’appareil avant leur écriture. L’utilisateur doit protéger son mot de passe, son appareil et son compte de stockage.</p><p>Cette politique peut être mise à jour si l’application, les services ou les exigences légales changent. Demandes de confidentialité : <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p></section>
+    </article>
+
+    <article data-copy="pt" lang="pt">
+      <div class="notice"><strong>Em resumo:</strong> o MemoSpeo não utiliza servidores próprios para guardar lembretes, notas, listas ou cópias de segurança. Os serviços Google integrados podem tratar dados técnicos limitados para publicidade, análise, notificações e compras.</div>
+      <section class="card"><h2>1. Responsável e âmbito</h2><p>Esta política descreve o tratamento de dados pela aplicação Android <strong>MemoSpeo</strong>. Contacto para privacidade e apoio: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p><p>O MemoSpeo não exige uma conta MemoSpeo. As contas do fornecedor de armazenamento ou do Google Play são geridas diretamente por esses fornecedores.</p></section>
+      <section class="card"><h2>2. Dados guardados no dispositivo</h2><p>Lembretes, prazos, notas, listas, sugestões, preferências e outras informações introduzidas são guardados principalmente na base de dados local do dispositivo.</p><ul><li>Os lembretes e as notificações são programados localmente.</li><li>A proteção biométrica é gerida pelo Android; o MemoSpeo não recebe nem guarda dados biométricos.</li><li>O conteúdo do utilizador não é incluído intencionalmente em eventos de publicidade ou análise.</li></ul><p>O Android pode incluir alguns dados da aplicação na cópia de segurança do dispositivo, consoante as definições do sistema e da conta Google. O MemoSpeo não consegue aceder a essas cópias.</p></section>
+      <section class="card"><h2>3. Cópia de segurança e restauro escolhidos pelo utilizador</h2><p>A cópia de segurança é <strong>opcional e manual</strong>. Depois de mostrar um resumo, o MemoSpeo utiliza o seletor de pastas do Android para escrever o ficheiro diretamente no local escolhido, como Google Drive, OneDrive ou armazenamento local.</p><ul><li>O ficheiro é cifrado no dispositivo com AES-GCM e uma palavra-passe escolhida pelo utilizador.</li><li>A palavra-passe não é guardada nem transmitida e não pode ser recuperada pelo MemoSpeo.</li><li>A base de dados e a cópia não passam por servidores MemoSpeo nem são guardadas no Firebase.</li><li>Os ficheiros devem ser eliminados no fornecedor escolhido; revogar o acesso à pasta não os elimina.</li></ul><p>O MemoSpeo guarda localmente apenas a permissão de acesso à pasta, o nome apresentado e a data da última cópia concluída. O fornecedor escolhido trata o ficheiro cifrado segundo os seus próprios termos.</p></section>
+      <section class="card"><h2>4. Serviços Google e dados técnicos</h2><p>A versão gratuita utiliza o Google AdMob e a User Messaging Platform. Dependendo do dispositivo, região e consentimento, estes serviços podem tratar ou partilhar localização aproximada derivada do endereço IP, interações com a aplicação e anúncios, diagnósticos e identificadores do dispositivo ou de publicidade. O MemoSpeo Pro remove a publicidade.</p><p>O Firebase Analytics pode recolher dados técnicos, interações, informações do dispositivo e diagnósticos para avaliar utilização, estabilidade e desempenho. O texto de lembretes, notas, listas ou cópias não é incluído intencionalmente nos eventos.</p><p>O Firebase Cloud Messaging pode tratar um identificador de instalação e informações técnicas necessárias para comunicações da aplicação. Os lembretes pessoais são programados localmente.</p><p>O Google Play Billing gere a compra única do MemoSpeo Pro e o restauro do direito adquirido. O MemoSpeo não recebe o número completo do cartão nem credenciais de pagamento.</p><p>Mais informações: <a href="https://policies.google.com/privacy">Política de Privacidade da Google</a>, <a href="https://policies.google.com/technologies/ads">tecnologias de publicidade Google</a> e <a href="https://firebase.google.com/support/privacy">privacidade e segurança Firebase</a>.</p></section>
+      <section class="card"><h2>5. Finalidades, conservação e controlo</h2><p>Os dados técnicos são utilizados para funcionalidades, análise, diagnóstico, publicidade, segurança e prevenção de fraude. Quando exigido por lei, a publicidade personalizada baseia-se no consentimento gerido através das ferramentas Google.</p><ul><li>Os dados locais permanecem até serem eliminados, os dados da aplicação serem apagados ou o MemoSpeo ser desinstalado.</li><li>As cópias permanecem no armazenamento escolhido até o utilizador as eliminar.</li><li>O acesso à pasta e as preferências de publicidade podem ser alterados na aplicação ou no sistema.</li><li>Os dados Google seguem os períodos de conservação e controlos definidos pela Google.</li></ul></section>
+      <section class="card"><h2>6. Segurança, alterações e contacto</h2><p>As comunicações online são cifradas em trânsito. As cópias são cifradas no dispositivo antes da escrita. O utilizador deve proteger a palavra-passe, o dispositivo e a conta de armazenamento.</p><p>Esta política pode ser atualizada se a aplicação, os serviços ou os requisitos legais mudarem. Pedidos de privacidade: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>.</p></section>
     </article>
   </main>
 
-  <footer>
-    <span>© 2026 MemoSpeo · Rany82Developer</span>
-    <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a>
-  </footer>
+  <footer class="wrap">© 2026 MemoSpeo · Privacy &amp; data protection</footer>
+  <script>
+    const ui = {
+      it: ['I tuoi dati, sotto il tuo controllo.', 'MemoSpeo conserva i contenuti sul dispositivo. Il backup è manuale, cifrato e scritto direttamente nello spazio scelto dall’utente.', 'Contenuti sul dispositivo', 'Backup cifrato localmente', 'Nessun account MemoSpeo', 'Lingua'],
+      en: ['Your data, under your control.', 'MemoSpeo keeps your content on your device. Backups are manual, encrypted, and written directly to storage selected by you.', 'Content stays on device', 'Locally encrypted backup', 'No MemoSpeo account', 'Language'],
+      de: ['Deine Daten, unter deiner Kontrolle.', 'MemoSpeo speichert Inhalte auf deinem Gerät. Backups sind manuell, verschlüsselt und werden direkt in den gewählten Speicher geschrieben.', 'Inhalte auf dem Gerät', 'Lokal verschlüsseltes Backup', 'Kein MemoSpeo-Konto', 'Sprache'],
+      fr: ['Vos données, sous votre contrôle.', 'MemoSpeo conserve le contenu sur votre appareil. La sauvegarde est manuelle, chiffrée et écrite directement dans l’espace choisi.', 'Contenu sur l’appareil', 'Sauvegarde chiffrée localement', 'Aucun compte MemoSpeo', 'Langue'],
+      pt: ['Os seus dados, sob o seu controlo.', 'O MemoSpeo mantém o conteúdo no dispositivo. As cópias são manuais, cifradas e escritas diretamente no espaço escolhido.', 'Conteúdo no dispositivo', 'Cópia cifrada localmente', 'Sem conta MemoSpeo', 'Idioma']
+    };
+    function setLanguage(lang) {
+      const selected = ui[lang] ? lang : 'en';
+      document.documentElement.lang = selected;
+      document.querySelectorAll('[data-copy]').forEach(el => el.classList.toggle('active', el.dataset.copy === selected));
+      document.querySelectorAll('.lang').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.lang === selected)));
+      const copy = ui[selected];
+      document.getElementById('hero-title').textContent = copy[0];
+      document.getElementById('hero-lead').textContent = copy[1];
+      document.getElementById('pill-local').textContent = copy[2];
+      document.getElementById('pill-encryption').textContent = copy[3];
+      document.getElementById('pill-account').textContent = copy[4];
+      document.getElementById('language-label').textContent = copy[5];
+      localStorage.setItem('memospeo-privacy-language', selected);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    document.querySelectorAll('.lang').forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
+    const saved = localStorage.getItem('memospeo-privacy-language');
+    const browser = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    setLanguage(saved || (ui[browser] ? browser : 'en'));
+  </script>
 </body>
 </html>
