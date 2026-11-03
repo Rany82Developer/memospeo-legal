@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Richiedi la cancellazione dell'account MemoSpeo e dei dati cloud associati.">
+  <meta name="description" content="Come gestire ed eliminare i dati locali e i backup cifrati di MemoSpeo.">
   <meta name="theme-color" content="#071b1a">
-  <title>Cancellazione account e dati · MemoSpeo</title>
+  <title>Gestione e cancellazione dati · MemoSpeo</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,63 +16,63 @@
     </a>
     <nav aria-label="Navigazione principale">
       <a href="privacy.html">Privacy</a>
-      <a class="active" href="delete-account.html">Cancella account</a>
+      <a class="active" href="delete-account.html">Gestione dati</a>
     </nav>
   </header>
 
   <main class="delete-page">
     <section class="delete-hero">
-      <div class="eyebrow"><span></span> Controllo dei dati</div>
-      <h1>Cancella account<br>e dati cloud</h1>
-      <p>Puoi richiedere la rimozione dell’identità Firebase usata da MemoSpeo e del backup cloud associato. Non ti chiederemo mai la password Google.</p>
+      <div class="eyebrow"><span></span> I dati restano sotto il tuo controllo</div>
+      <h1>Gestisci ed elimina<br>i tuoi dati</h1>
+      <p>MemoSpeo non crea un account personale e non conserva memo, appunti, liste o backup su server propri. I contenuti principali restano sul dispositivo; gli eventuali backup cifrati vengono scritti direttamente nella cartella scelta dall’utente.</p>
     </section>
 
     <section class="deletion-grid">
       <div class="steps-panel">
-        <div class="panel-title"><span>Metodo consigliato</span><strong>Dall’app</strong></div>
+        <div class="panel-title"><span>DATI SUL DISPOSITIVO</span><strong>Controllo locale</strong></div>
         <ol class="steps">
-          <li><span>1</span><div><strong>Apri MemoSpeo</strong><p>Accedi al menu laterale.</p></div></li>
-          <li><span>2</span><div><strong>Privacy e sicurezza</strong><p>Apri la sezione dedicata nelle Impostazioni.</p></div></li>
-          <li><span>3</span><div><strong>Controlli dati cloud</strong><p>Seleziona “Richiedi cancellazione dati cloud”.</p></div></li>
-          <li><span>4</span><div><strong>Invia l’email preparata</strong><p>Controlla l’account indicato e invia la richiesta.</p></div></li>
+          <li><span>1</span><div><strong>Elimina singoli elementi</strong><p>Puoi eliminare memo, scadenze e appunti dall’app. Gli elementi supportati passano prima nel Cestino.</p></div></li>
+          <li><span>2</span><div><strong>Svuota il Cestino</strong><p>Apri il Cestino dalle Impostazioni o dall’hub e rimuovi definitivamente gli elementi che non vuoi recuperare.</p></div></li>
+          <li><span>3</span><div><strong>Elimina tutti i dati locali</strong><p>Per rimuovere tutto dal telefono, cancella i dati di MemoSpeo dalle impostazioni Android oppure disinstalla l’app.</p></div></li>
+          <li><span>4</span><div><strong>Prima salva ciò che ti serve</strong><p>La cancellazione locale non può essere annullata se non possiedi un backup valido e la relativa password.</p></div></li>
         </ol>
       </div>
 
       <div class="request-panel">
-        <span class="card-number">RICHIESTA WEB</span>
-        <h2>Non hai più l’app?</h2>
-        <p>Invia una richiesta dall’indirizzo Google usato per Cloud Sync. Indica quell’indirizzo nel messaggio. Non inserire password, testi di appunti o altri dati sensibili.</p>
-        <a class="button primary full" href="mailto:nexusrany@hotmail.com?subject=Richiesta%20cancellazione%20dati%20MemoSpeo&amp;body=Chiedo%20la%20cancellazione%20dell%E2%80%99identit%C3%A0%20MemoSpeo%20e%20di%20tutti%20i%20dati%20cloud%20associati.%0A%0AAccount%20Google%20usato%20in%20MemoSpeo%3A%20%0A%0AConfermo%20di%20comprendere%20che%20la%20cancellazione%20cloud%20non%20rimuove%20i%20dati%20salvati%20localmente%20sul%20mio%20dispositivo.">Invia richiesta di cancellazione</a>
-        <p class="small">Destinatario: <a href="mailto:nexusrany@hotmail.com">nexusrany@hotmail.com</a></p>
+        <span class="card-number">NESSUN ACCOUNT MEMOSPEO</span>
+        <h2>Non serve una richiesta via email</h2>
+        <p>Non esiste un account MemoSpeo da far cancellare allo sviluppatore. I backup cifrati sono salvati direttamente nella cartella Google Drive o nella posizione scelta dall’utente. Per domande sulla privacy o assistenza puoi comunque contattarci.</p>
+        <a class="button primary full" href="mailto:nexusrany@hotmail.com?subject=MemoSpeo%20-%20Privacy%20e%20gestione%20dati">Contatta l’assistenza</a>
+        <p class="small">Non inviare password, testi di appunti o altri dati sensibili.</p>
       </div>
     </section>
 
     <section class="what-happens">
-      <h2>Cosa succede dopo</h2>
+      <h2>Backup e cartella scelta</h2>
       <div class="outcome-grid">
-        <div class="outcome yes"><span aria-hidden="true">✓</span><h3>Dati eliminati</h3><ul><li>identità Firebase usata da MemoSpeo;</li><li>backup presente in Cloud Firestore;</li><li>metadati cloud associati e controllati da MemoSpeo.</li></ul></div>
-        <div class="outcome no"><span aria-hidden="true">—</span><h3>Dati non eliminati automaticamente</h3><ul><li>dati ancora presenti sul tuo dispositivo;</li><li>il tuo account Google;</li><li>acquisti e registri conservati autonomamente da Google Play;</li><li>dati aggregati o resi anonimi non più collegabili all’account.</li></ul></div>
+        <div class="outcome yes"><span aria-hidden="true">✓</span><h3>Eliminare un backup</h3><ul><li>apri Google Drive, OneDrive o la memoria locale scelta;</li><li>entra nella cartella usata da MemoSpeo;</li><li>elimina i file di backup <code>.memospeo</code> che non vuoi conservare.</li></ul></div>
+        <div class="outcome no"><span aria-hidden="true">—</span><h3>Revocare l’accesso</h3><ul><li>apri le Impostazioni di MemoSpeo;</li><li>entra nella sezione Backup;</li><li>cambia o dimentica la cartella selezionata.</li></ul></div>
       </div>
-      <p>Potremmo chiederti di verificare la titolarità dell’account prima di procedere. La richiesta viene normalmente completata entro 30 giorni dalla verifica; riceverai conferma all’indirizzo usato per contattarci. Eventuale corrispondenza viene conservata solo per il tempo necessario a gestire e documentare la richiesta o adempiere a obblighi applicabili.</p>
-      <div class="callout warning"><strong>Importante</strong><p>Per rimuovere anche i dati locali, eliminali nell’app oppure cancella i dati di MemoSpeo dalle impostazioni Android/disinstalla l’app. MemoSpeo non può cancellare da remoto ciò che resta esclusivamente sul telefono.</p></div>
+      <p>Revocare o cambiare l’accesso alla cartella non elimina i file già presenti. I file rimangono di tua proprietà e devono essere cancellati direttamente dal servizio di archiviazione scelto.</p>
+      <div class="callout warning"><strong>Importante</strong><p>Eliminare i dati dal telefono non elimina automaticamente un backup esterno, e cancellare un backup non elimina i dati ancora presenti sul telefono. Le due operazioni sono separate per evitare perdite accidentali.</p></div>
+      <div class="callout"><strong>Servizi Google integrati</strong><p>Analytics, AdMob e Google Play possono conservare dati tecnici o registri secondo le proprie regole. MemoSpeo non può eliminare il tuo account Google. Per dettagli consulta l’<a href="privacy.html">Informativa privacy</a> e i controlli del tuo account Google.</p></div>
     </section>
 
     <section id="english" class="english-section" lang="en">
       <div class="language-label">ENGLISH VERSION</div>
-      <h2>Delete your MemoSpeo account and cloud data</h2>
-      <p>You can request deletion of the Firebase identity used by MemoSpeo and its associated cloud backup. We will never ask for your Google password.</p>
-      <h3>From the app</h3>
+      <h2>Manage and delete your MemoSpeo data</h2>
+      <p>MemoSpeo does not create a personal account and does not store memos, notes, lists, or backups on its own servers. Main content remains on the device. Optional encrypted backups are written directly to the folder selected by the user.</p>
+      <h3>Data on your device</h3>
       <ol>
-        <li>Open MemoSpeo and the side menu.</li>
-        <li>Select <strong>Privacy and security</strong>.</li>
-        <li>Open <strong>Cloud data controls</strong>.</li>
-        <li>Select <strong>Request cloud data deletion</strong> and send the prepared email.</li>
+        <li>Delete individual memos, due dates, and notes from the app. Supported items first move to Trash.</li>
+        <li>Open Trash from Settings or the hub to permanently remove items you no longer need.</li>
+        <li>To remove all local MemoSpeo data, clear the app’s data in Android Settings or uninstall the app.</li>
       </ol>
-      <h3>If you no longer have the app</h3>
-      <p>Email <a href="mailto:nexusrany@hotmail.com?subject=MemoSpeo%20data%20deletion%20request">nexusrany@hotmail.com</a>, preferably from the Google address used for Cloud Sync, and identify that address in your request. Do not send passwords, note contents or other sensitive information.</p>
-      <p>After account ownership is verified, MemoSpeo’s Firebase identity, Cloud Firestore backup and associated cloud metadata controlled by MemoSpeo will be deleted. This does not delete local device data, your Google account, records independently retained by Google Play, or aggregate/anonymized data that can no longer be linked to the account.</p>
-      <p>Requests are normally completed within 30 days after verification, and confirmation is sent to the contact address. Correspondence is kept only as long as necessary to process and document the request or meet applicable obligations.</p>
-      <a class="button primary inline-button" href="mailto:nexusrany@hotmail.com?subject=MemoSpeo%20data%20deletion%20request&amp;body=I%20request%20deletion%20of%20my%20MemoSpeo%20identity%20and%20all%20associated%20cloud%20data.%0A%0AGoogle%20account%20used%20in%20MemoSpeo%3A%20%0A%0AI%20understand%20that%20cloud%20deletion%20does%20not%20remove%20data%20stored%20locally%20on%20my%20device.">Send deletion request</a>
+      <h3>Encrypted backup files</h3>
+      <p>Open the Google Drive, OneDrive, or local folder you selected and delete any <code>.memospeo</code> backup files you no longer wish to keep. Changing or revoking folder access in MemoSpeo does not delete existing files.</p>
+      <h3>No MemoSpeo account deletion request is required</h3>
+      <p>There is no MemoSpeo account to be deleted by the developer. Encrypted backups are stored directly in the Google Drive folder or other location selected by the user. For privacy or support questions, email <a href="mailto:nexusrany@hotmail.com?subject=MemoSpeo%20-%20Privacy%20and%20data%20management">nexusrany@hotmail.com</a>. Do not send passwords, note contents, or other sensitive information.</p>
+      <p>Google Analytics, AdMob, and Google Play may retain technical data or records under their own policies. MemoSpeo cannot delete your Google account. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
     </section>
   </main>
 
